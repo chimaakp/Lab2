@@ -125,6 +125,9 @@ public class Hand {
 		return h;
 	}
 
+	/*
+	 * Do these like the 4 of a kind example
+	 */
 	public static boolean isHandFiveOfAKind(Hand h, HandScore hs) {
 		hs.setHandStrength(eHandStrength.FiveOfAKind.getHandStrength());
 
@@ -141,6 +144,9 @@ public class Hand {
 		return false;
 	}
 
+	/*
+	 * Use this method as a template for the other hand evaluating methods
+	 */
 	public static boolean isHandFourOfAKind(Hand h, HandScore hs) {
 		
 		boolean bHandCheck = false;
@@ -171,6 +177,9 @@ public class Hand {
 		return bHandCheck;
 	}
 
+	/*
+	 * And these like the 4 of a kind example
+	 */
 	public static boolean isHandFullHouse(Hand h, HandScore hs) {
 		hs.setHandStrength(eHandStrength.FullHouse.getHandStrength());
 		return false;
