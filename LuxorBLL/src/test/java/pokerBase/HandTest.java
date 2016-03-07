@@ -151,21 +151,26 @@ public class HandTest {
 		//	FOAK has one kicker.  Was it a King?		
 		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteRank(), eRank.KING);
 	}	
-
+	
+	
+	@Test
+	public void TestHighCard() {
+	
+	//change up card values later
+	ArrayList<Card> HighCard = new ArrayList<Card>();
+	HighCard.add(new Card(eSuit.CLUBS,eRank.SIX,0));
+	HighCard.add(new Card(eSuit.HEARTS,eRank.TEN,0));
+	HighCard.add(new Card(eSuit.CLUBS,eRank.TWO,0));
+	HighCard.add(new Card(eSuit.SPADES,eRank.ACE,0));
+	HighCard.add(new Card(eSuit.DIAMONDS,eRank.KING,0));
+	
+	Hand h = new Hand();
+	h = SetHand(HighCard,h);
+	
+	boolean bActualIsHandHighCard = Hand.isHandFourOfAKind(h, hs);
+	boolean bExpectedIsHandHighCard = true;
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
 }
