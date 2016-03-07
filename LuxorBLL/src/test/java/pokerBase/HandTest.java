@@ -156,7 +156,7 @@ public class HandTest {
 	@Test
 	public void TestHighCard() {
 	
-	//change up card values later
+	HandScore hs = new HandScore();
 	ArrayList<Card> HighCard = new ArrayList<Card>();
 	HighCard.add(new Card(eSuit.CLUBS,eRank.SIX,0));
 	HighCard.add(new Card(eSuit.HEARTS,eRank.TEN,0));
@@ -167,8 +167,17 @@ public class HandTest {
 	Hand h = new Hand();
 	h = SetHand(HighCard,h);
 	
-	boolean bActualIsHandHighCard = Hand.isHandFourOfAKind(h, hs);
+	boolean bActualIsHandHighCard = Hand.isHandHighCard(h, hs);
 	boolean bExpectedIsHandHighCard = true;
+	
+		//	Did this evaluate to Four of a Kind?
+		assertEquals(bActualIsHandHighCard,bExpectedIsHandHighCard);		
+		//	Was the four of a kind an Ace?
+		assertEquals(hs.getHiHand(),eRank.ACE.getiRankNbr());		
+		//	FOAK has one kicker.  Was it a Club?
+		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteSuit(), eSuit.CLUBS);
+		//	FOAK has one kicker.  Was it a King?		
+		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteRank(), eRank.KING);
 	
 	
 	
