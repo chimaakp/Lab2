@@ -170,16 +170,48 @@ public class HandTest {
 	boolean bActualIsHandHighCard = Hand.isHandHighCard(h, hs);
 	boolean bExpectedIsHandHighCard = true;
 	
-		//	Did this evaluate to Four of a Kind?
+		//	Did this evaluate to High Card?
 		assertEquals(bActualIsHandHighCard,bExpectedIsHandHighCard);		
-		//	Was the four of a kind an Ace?
+		//	Was the high card an Ace?
 		assertEquals(hs.getHiHand(),eRank.ACE.getiRankNbr());		
-		//	FOAK has one kicker.  Was it a Club?
-		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteSuit(), eSuit.CLUBS);
-		//	FOAK has one kicker.  Was it a King?		
+		//	HK has four kickers.  Was the highest one a Diamond?
+		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteSuit(), eSuit.DIAMONDS);
+		//	HK has four kickers.  Was the highest one a King?		
 		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteRank(), eRank.KING);
 	
 	
 	
 	}
+	
+	public void TestHighCardEval() {
+		
+		ArrayList<Card> HighCard = new ArrayList<Card>();
+		HighCard.add(new Card(eSuit.CLUBS,eRank.SIX,0));
+		HighCard.add(new Card(eSuit.HEARTS,eRank.TEN,0));
+		HighCard.add(new Card(eSuit.CLUBS,eRank.TWO,0));
+		HighCard.add(new Card(eSuit.SPADES,eRank.ACE,0));
+		HighCard.add(new Card(eSuit.DIAMONDS,eRank.KING,0));
+		
+		Hand h = new Hand();
+		h = SetHand(HighCard,h);
+		
+		try {
+			h = Hand.EvaluateHand(h);
+		} catch (HandException e) {			
+			e.printStackTrace();
+			fail("TestHighCardEval failed");
+		}
+		HandScore hs = h.getHandScore();
+		boolean bActualIsHandHighCard = Hand.isHandHighCard(h, hs);
+		boolean bExpectedIsHandHighCard = true;
+		
+		//	Did this evaluate to High Card?
+		assertEquals(bActualIsHandHighCard,bExpectedIsHandHighCard);		
+		//	Was the high card an Ace?
+		assertEquals(hs.getHiHand(),eRank.ACE.getiRankNbr());		
+		//	HK has four kickers.  Was the highest one a Diamond?
+		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteSuit(), eSuit.DIAMONDS);
+		//	HK has four kickers.  Was the highest one a King?		
+		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteRank(), eRank.KING);
+	}	
 }
