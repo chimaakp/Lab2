@@ -174,12 +174,23 @@ public class HandTest {
 		assertEquals(bActualIsHandHighCard,bExpectedIsHandHighCard);		
 		//	Was the high card an Ace?
 		assertEquals(hs.getHiHand(),eRank.ACE.getiRankNbr());		
-		//	HK has four kickers.  Was the highest one a Diamond?
+		//	HK has four kickers.  First Suit?
 		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteSuit(), eSuit.DIAMONDS);
-		//	HK has four kickers.  Was the highest one a King?		
+		//	HK has four kickers.  First Rank?		
 		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteRank(), eRank.KING);
-	
-	
+		//	HK has four kickers.  Second Suit?
+		assertEquals(hs.getKickers().get(eCardNo.SecondCard.getCardNo()).geteSuit(), eSuit.HEARTS);
+		//	HK has four kickers.  Second Rank?		
+		assertEquals(hs.getKickers().get(eCardNo.SecondCard.getCardNo()).geteRank(), eRank.TEN);
+		//	HK has four kickers.  Third Suit?
+		assertEquals(hs.getKickers().get(eCardNo.ThirdCard.getCardNo()).geteSuit(), eSuit.CLUBS);
+		//	HK has four kickers.  Third Rank?		
+		assertEquals(hs.getKickers().get(eCardNo.ThirdCard.getCardNo()).geteRank(), eRank.SIX);
+		//	HK has four kickers.  Fourth Suit?
+		assertEquals(hs.getKickers().get(eCardNo.FourthCard.getCardNo()).geteSuit(), eSuit.CLUBS);
+		//	HK has four kickers.  Fourth Rank?		
+		assertEquals(hs.getKickers().get(eCardNo.FourthCard.getCardNo()).geteRank(), eRank.TWO);
+		
 	
 	}
 	
